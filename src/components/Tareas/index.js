@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class Tareas extends Component {
   render() {
@@ -8,4 +9,6 @@ class Tareas extends Component {
   }
 }
 
-export default Tareas;
+const mapStateToProps = ({tareasReducer}) => tareasReducer
+
+export default connect(mapStateToProps)(Tareas);

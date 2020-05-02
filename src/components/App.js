@@ -3,8 +3,8 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Menu from './Menu';
 import Usuarios from './usuarios/index'
 import Publicaciones from './Publicaciones';
+import Tareas from './Tareas/index';
 
-const Tareas = () => <div>Tareas</div>
 
 
 const App = () => (

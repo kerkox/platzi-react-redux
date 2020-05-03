@@ -1,6 +1,6 @@
 import axios from "axios";
 import { TRAER_TODAS, CARGANDO, ERROR } from "../types/tareasTypes";
-export const traerTodos = () => async (dispatch) => {
+export const traerTodas = () => async (dispatch) => {
   dispatch({
     type: CARGANDO,
     payload: true,
@@ -10,9 +10,19 @@ export const traerTodos = () => async (dispatch) => {
       "https://jsonplaceholder.typicode.com/todos"
     );
 
+    const tareas = {};
+    respuesta.data.map((tar) => {
+      return tareas[tar.userId] = {
+        ...tareas[tar.userId],
+        [tar.id]: {
+          ...tar
+        }
+      }
+    });
+
     dispatch({
       type: TRAER_TODAS,
-      payload: respuesta.data,
+      payload: tareas,
     });
   } catch (error) {
     console.error("Error", error.message);

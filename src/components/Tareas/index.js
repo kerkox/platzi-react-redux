@@ -1,14 +1,17 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as tareasActions from "../../actions/tareasActions";
 class Tareas extends Component {
+  componentDidMount() {
+    this.props.traerTodas();
+  }
+
   render() {
-    return (
-      <div>Tareas Saludar</div>
-    )
+    console.log(this.props);
+    return <div>Tareas Saludar</div>;
   }
 }
 
-const mapStateToProps = ({tareasReducer}) => tareasReducer
+const mapStateToProps = ({ tareasReducer }) => tareasReducer;
 
-export default connect(mapStateToProps)(Tareas);
+export default connect(mapStateToProps, tareasActions)(Tareas);

@@ -8,7 +8,9 @@ import Fatal from "../Shared/Fatal/Fatal";
 
 class Tareas extends Component {
   componentDidMount() {
-    this.props.traerTodas();
+    if(!Object.keys(this.props.tareas).length){
+      this.props.traerTodas();
+    }
   }
   mostrarContenido = () => {
     const { tareas, cargando, error } = this.props;

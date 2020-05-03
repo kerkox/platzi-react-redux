@@ -9,8 +9,10 @@ const INITIAL_STATE = {
   tareas: {},
   cargando: false,
   error: "",
-  usuario_id: "4",
-  titulo: "qwerty",
+  tarea: {
+    usuario_id: "",
+    titulo: "",
+  }
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -18,7 +20,10 @@ export default (state = INITIAL_STATE, action) => {
     case TRAER_TODAS:
       return { ...state, tareas: action.payload, cargando: false, error: "" };
     case CAMBIO_USER_ID:
-      return { ...state, tareas: action.payload, cargando: false, error: "" };
+      const { tarea } = INITIAL_STATE
+      const { name, value } = action.payload.target;
+      tarea[name] = value;
+      return { ...state, tarea: { ...tarea }, cargando: false, error: "" };
     case CARGANDO:
       return { ...state, cargando: true };
     case ERROR:

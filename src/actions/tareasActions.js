@@ -38,9 +38,9 @@ export const traerTodas = () => async (dispatch) => {
   }
 };
 
-export const cambioUsuarioId = () => (dispatch) => {
+export const cambioUsuarioId = (target) => (dispatch) => {
   dispatch({
     type:CAMBIO_USER_ID,
-    payload: '2'
+    payload: target
   })
 }

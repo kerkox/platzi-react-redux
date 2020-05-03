@@ -11,8 +11,12 @@ import { Provider } from 'react-redux';
 import reduxThonk from 'redux-thunk';
 
 import reducers from './reducers/index';
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-const store = createStore(reducers, {}, applyMiddleware(reduxThonk));
+const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(reduxThonk))
+);
 
 ReactDOM.render(
   <Provider store={store}>

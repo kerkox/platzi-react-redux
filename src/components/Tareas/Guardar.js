@@ -6,6 +6,7 @@ import Spinner from "../Shared/Spinner/Spinner";
 
 class Guardar extends Component {
   handleChange = (event) => {
+    event.persist();
     this.props.cambioUsuarioId(event);
   };
   guardar = () => {
@@ -46,7 +47,7 @@ class Guardar extends Component {
         <input
           type="number"
           name="userId"
-          value={this.props.tarea.usuario_id}
+          value={this.props.tarea.userId}
           onChange={this.handleChange}
         />
         <br />
@@ -55,7 +56,7 @@ class Guardar extends Component {
         <input
           type="text"
           name="title"
-          defaultValue={this.props.tarea.titulo}
+          value={this.props.tarea.title}
           onChange={this.handleChange}
         />
         <br />

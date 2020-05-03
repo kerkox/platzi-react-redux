@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as tareasActions from "../../actions/tareasActions";
-import Fatal from "../Shared/Fatal/Fatal";
 import Spinner from "../Shared/Spinner/Spinner";
+import Fatal from "../Shared/Fatal/Fatal";
+import { Redirect } from 'react-router-dom';
+
+import * as tareasActions from "../../actions/tareasActions";
 
 class Guardar extends Component {
   handleChange = (event) => {
@@ -39,9 +41,11 @@ class Guardar extends Component {
   }
 
   render() {
-    console.log("this.props", this.props);
     return (
       <div>
+        {
+          (this.props.regresar) && <Redirect to='/tareas' />
+        }
         <h1>Guardar Tarea</h1>
         Usuario id:
         <input

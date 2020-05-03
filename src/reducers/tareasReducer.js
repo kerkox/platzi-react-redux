@@ -4,6 +4,8 @@ const INITIAL_STATE = {
   tareas: {},
   cargando: false,
   error: "",
+  usuario_id: '4',
+  titulo: 'qwerty'
 };
 
 export default (state = INITIAL_STATE, action) => {

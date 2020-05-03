@@ -5,6 +5,7 @@ import {
   ERROR,
   CAMBIO_USER_ID,
   GUARDADA,
+  ACTUALIZAR,
 } from "../types/tareasTypes";
 export const traerTodas = () => async (dispatch) => {
   dispatch({
@@ -91,3 +92,28 @@ export const editar = (tarea_editada) => async (dispatch) => {
     });
   }
 };
+
+export const cambioCheck = (user_id,tarea_id) => async (dispatch, getState) => {
+    
+    dispatch({
+      type: CARGANDO,
+      payload: true,
+    });
+
+    const { tareas } = getState().tareasReducer;
+    const seleccionada = tareas[user_id][tarea_id];
+
+    const actualizadas = {
+      ...tareas
+    };
+    actualizadas[user_id][tarea_id] = {
+      ...tareas[user_id][tarea_id],
+      completed: !seleccionada.completed
+    }
+
+      dispatch({
+        type: ACTUALIZAR,
+        payload: actualizadas
+      });
+
+}

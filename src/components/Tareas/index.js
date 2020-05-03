@@ -36,13 +36,17 @@ class Tareas extends Component {
   }
 
   ponerTareas = (user_id) => {
-    const { tareas } = this.props;
+    const { tareas, cambioCheck } = this.props;
     const por_usuario = {
       ...tareas[user_id]
     };
     return Object.keys(por_usuario).map((tar_id) => (
       <div key={tar_id}>
-        <input type="checkbox" defaultChecked={por_usuario[tar_id].completed} />
+        <input
+          type="checkbox"
+          defaultChecked={por_usuario[tar_id].completed}
+          onChange={() => cambioCheck(user_id, tar_id) }
+        />
         {por_usuario[tar_id].title}
         <button className="m_left">
           <Link to={`/tareas/guardar/${user_id}/${tar_id}`}>Editar</Link>

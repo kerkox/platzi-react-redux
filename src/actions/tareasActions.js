@@ -44,3 +44,7 @@ export const cambioUsuarioId = (target) => (dispatch) => {
     payload: target
   })
 }
+
+export const agregar = (nueva_tarea) => (dispatch)  => {
+  console.log("nueva_tarea", nueva_tarea);
+}

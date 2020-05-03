@@ -10,8 +10,8 @@ const INITIAL_STATE = {
   cargando: false,
   error: "",
   tarea: {
-    usuario_id: "",
-    titulo: "",
+    userId: "",
+    title: "",
   }
 };
 

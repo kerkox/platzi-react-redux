@@ -6,6 +6,13 @@ class Guardar extends Component {
   handleChange = (event) => {
     this.props.cambioUsuarioId(event);
   };
+  guardar = () => {
+    const nueva_tarea ={
+      ...this.props.tarea,
+      completed:false
+    }
+    this.props.agregar(nueva_tarea);
+  }
 
   render() {
     return (
@@ -14,7 +21,7 @@ class Guardar extends Component {
         Usuario id:
         <input
           type="number"
-          name="usuario_id"
+          name="userId"
           value={this.props.tarea.usuario_id}
           onChange={this.handleChange}
         />
@@ -23,13 +30,14 @@ class Guardar extends Component {
         Titulo:
         <input
           type="text"
-          name="titulo"
+          name="title"
           defaultValue={this.props.tarea.titulo}
           onChange={this.handleChange}
         />
         <br />
         <br />
-        <button>Guardar</button>
+        <button onClick={ this.guardar }
+        >Guardar</button>
       </div>
     );
   }

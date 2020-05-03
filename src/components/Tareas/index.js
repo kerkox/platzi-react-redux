@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
+
 import * as tareasActions from "../../actions/tareasActions";
 import Spinner from "../Shared/Spinner/Spinner";
 import Fatal from "../Shared/Fatal/Fatal";
+
 class Tareas extends Component {
   componentDidMount() {
     this.props.traerTodas();
@@ -47,7 +50,9 @@ class Tareas extends Component {
     return (
       <div>
         <button>
+        <Link to='/tareas/guardar'>
           Agregar
+        </Link>
         </button>
         {this.mostrarContenido()}
       </div>

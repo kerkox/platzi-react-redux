@@ -7,9 +7,20 @@ import { Redirect } from 'react-router-dom';
 import * as tareasActions from "../../actions/tareasActions";
 
 class Guardar extends Component {
+
+  componentDidMount = () => {
+    const {
+      match: {
+        params: { user_id, tarea_id },
+      },
+      tareas,
+      cambioFormTareas,
+    } = this.props;
+  }
+
   handleChange = (event) => {
     event.persist();
-    this.props.cambioUsuarioId(event);
+    this.props.cambioFormTareas(event);
   };
   guardar = () => {
     const nueva_tarea = {

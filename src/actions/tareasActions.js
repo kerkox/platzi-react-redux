@@ -39,7 +39,7 @@ export const traerTodas = () => async (dispatch) => {
   }
 };
 
-export const cambioUsuarioId = (target) => (dispatch) => {
+export const cambioFormTareas = (target) => (dispatch) => {
   dispatch({
     type: CAMBIO_USER_ID,
     payload: target,

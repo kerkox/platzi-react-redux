@@ -46,7 +46,11 @@ li {
 }
 
 .contenedor_tareas {
-  font-size: 20px;
+  font-size: 14px;
   margin-left: 50px;
   margin-bottom: 70px;
+}
+
+.m_left {
+  margin-left: 20px;
 }

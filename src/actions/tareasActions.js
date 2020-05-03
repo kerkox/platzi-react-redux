@@ -4,7 +4,7 @@ import {
   CARGANDO,
   ERROR,
   CAMBIO_USER_ID,
-  AGREGADA,
+  GUARDADA,
 } from "../types/tareasTypes";
 export const traerTodas = () => async (dispatch) => {
   dispatch({
@@ -58,8 +58,31 @@ export const agregar = (nueva_tarea) => async (dispatch) => {
     );
     console.log(respuesta.data);
     dispatch({
-      type: AGREGADA
+      type: GUARDADA
     })
+  } catch (error) {
+    console.error(error.message);
+    dispatch({
+      type: ERROR,
+      payload: error.message,
+    });
+  }
+};
+
+export const editar = (tarea_editada) => async (dispatch) => {
+  dispatch({
+    type: CARGANDO,
+    payload: true,
+  });
+  try {
+    const respuesta = await axios.put(
+      `https://jsonplaceholder.typicode.com/todos/${tarea_editada.id}`,
+      tarea_editada
+    );
+    console.log(respuesta.data);
+    dispatch({
+      type: GUARDADA,
+    });
   } catch (error) {
     console.error(error.message);
     dispatch({

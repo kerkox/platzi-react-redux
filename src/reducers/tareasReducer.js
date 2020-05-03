@@ -3,7 +3,7 @@ import {
   CARGANDO,
   ERROR,
   CAMBIO_USER_ID,
-  AGREGADA,
+  GUARDADA,
 } from "../types/tareasTypes";
 
 const INITIAL_STATE = {
@@ -32,7 +32,7 @@ export default (state = INITIAL_STATE, action) => {
       const { name, value } = action.payload.target;
       tarea[name] = value;
       return { ...state, tarea: { ...tarea }, cargando: false, error: "" };
-    case AGREGADA:
+    case GUARDADA:
       const _tarea = {
         userId: "",
         title: "",

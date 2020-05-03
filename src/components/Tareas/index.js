@@ -44,8 +44,14 @@ class Tareas extends Component {
   }
 
   render() {
-    console.log(this.props);
-    return <div>{this.mostrarContenido()}</div>;
+    return (
+      <div>
+        <button>
+          Agregar
+        </button>
+        {this.mostrarContenido()}
+      </div>
+    );
   }
 }
 

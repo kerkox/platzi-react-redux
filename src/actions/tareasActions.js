@@ -58,7 +58,7 @@ export const agregar = (nueva_tarea) => async (dispatch) => {
     );
     console.log(respuesta.data);
     dispatch({
-      type:AGREGADA
+      type: AGREGADA
     })
   } catch (error) {
     console.error(error.message);

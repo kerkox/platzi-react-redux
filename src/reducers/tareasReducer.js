@@ -26,7 +26,11 @@ export default (state = INITIAL_STATE, action) => {
       tarea[name] = value;
       return { ...state, tarea: { ...tarea }, cargando: false, error: "" };
     case AGREGADA:
-      return { ...state, tarea: {userId:'',title:''}, cargando: false, error: "" };
+      const _tarea = {
+        userId: "",
+        title: "",
+      };
+      return { ...state, tarea: _tarea, cargando: false, error: "" };
     case CARGANDO:
       return { ...state, cargando: true };
     case ERROR:

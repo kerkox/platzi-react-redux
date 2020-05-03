@@ -1,20 +1,44 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as tareasActions from "../../actions/tareasActions";
+import Fatal from "../Shared/Fatal/Fatal";
+import Spinner from "../Shared/Spinner/Spinner";
 
 class Guardar extends Component {
   handleChange = (event) => {
     this.props.cambioUsuarioId(event);
   };
   guardar = () => {
-    const nueva_tarea ={
+    const nueva_tarea = {
       ...this.props.tarea,
-      completed:false
-    }
+      completed: false,
+    };
     this.props.agregar(nueva_tarea);
+  };
+
+  deshabilitar = () => {
+    const { tarea, cargando } = this.props;
+    if (cargando) {
+      return true;
+    }
+
+    if (!tarea.userId || !tarea.title) {
+      return true;
+    }
+    return false;
+  };
+  mostrarAccion = () => {
+    const { error, cargando } = this.props;
+    if(error){
+      return <Fatal mensaje={error}/>
+    }
+    if(cargando){
+      return <Spinner/>
+    }
   }
 
   render() {
+    console.log("this.props", this.props);
     return (
       <div>
         <h1>Guardar Tarea</h1>
@@ -36,8 +60,10 @@ class Guardar extends Component {
         />
         <br />
         <br />
-        <button onClick={ this.guardar }
-        >Guardar</button>
+        <button onClick={this.guardar} disabled={this.deshabilitar()}>
+          Guardar
+        </button>
+        {this.mostrarAccion()}
       </div>
     );
   }

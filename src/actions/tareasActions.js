@@ -4,6 +4,7 @@ import {
   CARGANDO,
   ERROR,
   CAMBIO_USER_ID,
+  AGREGADA,
 } from "../types/tareasTypes";
 export const traerTodas = () => async (dispatch) => {
   dispatch({
@@ -17,12 +18,12 @@ export const traerTodas = () => async (dispatch) => {
 
     const tareas = {};
     respuesta.data.map((tar) => {
-      return tareas[tar.userId] = {
+      return (tareas[tar.userId] = {
         ...tareas[tar.userId],
         [tar.id]: {
-          ...tar
-        }
-      }
+          ...tar,
+        },
+      });
     });
 
     dispatch({
@@ -40,11 +41,30 @@ export const traerTodas = () => async (dispatch) => {
 
 export const cambioUsuarioId = (target) => (dispatch) => {
   dispatch({
-    type:CAMBIO_USER_ID,
-    payload: target
-  })
-}
+    type: CAMBIO_USER_ID,
+    payload: target,
+  });
+};
 
-export const agregar = (nueva_tarea) => (dispatch)  => {
-  console.log("nueva_tarea", nueva_tarea);
-}
+export const agregar = (nueva_tarea) => async (dispatch) => {
+  dispatch({
+    type: CARGANDO,
+    payload: true,
+  });
+  try {
+    const respuesta = await axios.post(
+      "https://jsonplaceholder.typicode.com/todos",
+      nueva_tarea
+    );
+    console.log(respuesta.data);
+    dispatch({
+      type:AGREGADA
+    })
+  } catch (error) {
+    console.error(error.message);
+    dispatch({
+      type: ERROR,
+      payload: error.message,
+    });
+  }
+};

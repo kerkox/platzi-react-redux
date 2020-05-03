@@ -1,5 +1,10 @@
 import axios from "axios";
-import { TRAER_TODAS, CARGANDO, ERROR } from "../types/tareasTypes";
+import {
+  TRAER_TODAS,
+  CARGANDO,
+  ERROR,
+  CAMBIO_USER_ID,
+} from "../types/tareasTypes";
 export const traerTodas = () => async (dispatch) => {
   dispatch({
     type: CARGANDO,
@@ -32,3 +37,10 @@ export const traerTodas = () => async (dispatch) => {
     });
   }
 };
+
+export const cambioUsuarioId = () => (dispatch) => {
+  dispatch({
+    type:CAMBIO_USER_ID,
+    payload: '2'
+  })
+}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as tareasActions from '../../actions/tareasActions';
 
 class Guardar extends Component {
   render() {
@@ -8,7 +9,8 @@ class Guardar extends Component {
       <div>
         <h1>Guardar Tarea</h1>
         Usuario id:
-        <input type="number" defaultValue={this.props.usuario_id} />
+        <input type="number" defaultValue={this.props.usuario_id} 
+        onChange={ this.props.cambioUsuarioId } />
         <br />
         <br />
         Titulo:
@@ -24,4 +26,4 @@ class Guardar extends Component {
 
 const mapStateToProps = ({ tareasReducer }) => tareasReducer;
 
-export default connect(mapStateToProps)(Guardar);
+export default connect(mapStateToProps,tareasActions)(Guardar);

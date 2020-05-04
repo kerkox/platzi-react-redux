@@ -101,6 +101,9 @@ export const cambioCheck = (user_id,tarea_id) => async (dispatch, getState) => {
     const actualizadas = {
       ...tareas
     };
+    actualizadas[user_id] = {
+      ...tareas[user_id]
+    }
     actualizadas[user_id][tarea_id] = {
       ...tareas[user_id][tarea_id],
       completed: !seleccionada.completed

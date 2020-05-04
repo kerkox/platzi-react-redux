@@ -12,6 +12,12 @@ class Tareas extends Component {
       this.props.traerTodas();
     }
   }
+
+  componentDidUpdate(){
+    if (!Object.keys(this.props.tareas).length) {
+      this.props.traerTodas();
+    }
+  }
   mostrarContenido = () => {
     const { tareas, cargando, error } = this.props;
     
@@ -36,7 +42,7 @@ class Tareas extends Component {
   }
 
   ponerTareas = (user_id) => {
-    const { tareas, cambioCheck } = this.props;
+    const { tareas, cambioCheck, eliminar } = this.props;
     const por_usuario = {
       ...tareas[user_id]
     };
@@ -51,7 +57,7 @@ class Tareas extends Component {
         <button className="m_left">
           <Link to={`/tareas/guardar/${user_id}/${tar_id}`}>Editar</Link>
         </button>
-        <button className="m_left">Eliminar</button>
+        <button className="m_left" onClick={ () => eliminar(tar_id) }>Eliminar</button>
       </div>
     ));
   }
@@ -64,7 +70,7 @@ class Tareas extends Component {
           Agregar
         </Link>
         </button>
-        {this.mostrarContenido()}
+        { this.mostrarContenido() }
       </div>
     );
   }

@@ -115,3 +115,27 @@ export const cambioCheck = (user_id,tarea_id) => async (dispatch, getState) => {
       });
 
 }
+
+export const eliminar =  (tar_id) => async (dispatch) => {
+  dispatch({
+    type: CARGANDO,
+    payload: true,
+  });
+  try {
+    const respuesta = await axios.delete(
+      `https://jsonplaceholder.typicode.com/todos/${tar_id}`
+    );
+    console.log(respuesta);
+    dispatch({
+      type: TRAER_TODAS,
+      payload: {}
+    });
+  } catch (error) {
+    console.error(error.message);
+    dispatch({
+      type: ERROR,
+      payload: error.message,
+    });
+  }
+
+}

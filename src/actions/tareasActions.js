@@ -95,11 +95,6 @@ export const editar = (tarea_editada) => async (dispatch) => {
 
 export const cambioCheck = (user_id,tarea_id) => async (dispatch, getState) => {
     
-    dispatch({
-      type: CARGANDO,
-      payload: true,
-    });
-
     const { tareas } = getState().tareasReducer;
     const seleccionada = tareas[user_id][tarea_id];
 

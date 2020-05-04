@@ -6,6 +6,7 @@ import {
   CAMBIO_USER_ID,
   GUARDADA,
   ACTUALIZAR,
+  LIMPIAR,
 } from "../types/tareasTypes";
 export const traerTodas = () => async (dispatch) => {
   dispatch({
@@ -135,4 +136,10 @@ export const eliminar =  (tar_id) => async (dispatch) => {
     });
   }
 
+}
+
+export const limpiarForma = () => (dispatch) => {
+  dispatch({
+    type:LIMPIAR
+  });
 }

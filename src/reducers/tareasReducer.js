@@ -5,6 +5,7 @@ import {
   CAMBIO_USER_ID,
   GUARDADA,
   ACTUALIZAR,
+  LIMPIAR,
 } from "../types/tareasTypes";
 
 const INITIAL_STATE = {
@@ -48,6 +49,8 @@ export default (state = INITIAL_STATE, action) => {
       };
     case ACTUALIZAR: 
       return { ...state, tareas: action.payload }
+    case LIMPIAR:
+      return { ...state, tarea: { userId: '', title: ''} };
     case CARGANDO:
       return { ...state, cargando: true };
     case ERROR:

@@ -14,6 +14,7 @@ class Guardar extends Component {
       },
       tareas,
       cambioFormTareas,
+      limpiarForma
     } = this.props;
 
     if ( Object.keys(tareas).length && user_id && tarea_id) {
@@ -22,6 +23,8 @@ class Guardar extends Component {
       const title = { target: { name: "title", value: tarea.title } };
       cambioFormTareas(userId);
       cambioFormTareas(title);
+    } else {
+      limpiarForma();
     }
   };
 

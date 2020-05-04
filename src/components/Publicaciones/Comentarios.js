@@ -5,7 +5,6 @@ import Fatal from '../Shared/Fatal/Fatal';
 
 
 const Comentarios = (props) => {
-  console.log('comentarios props:', props)
   if (props.com_error) {
     return <Fatal mensaje={props.error} />;
   }

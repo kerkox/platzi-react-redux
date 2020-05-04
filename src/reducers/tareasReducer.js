@@ -47,7 +47,6 @@ export default (state = INITIAL_STATE, action) => {
         regresar: true,
       };
     case ACTUALIZAR: 
-    console.log("action.payload", action.payload);
       return { ...state, tareas: action.payload }
     case CARGANDO:
       return { ...state, cargando: true };

@@ -57,7 +57,6 @@ export const agregar = (nueva_tarea) => async (dispatch) => {
       "https://jsonplaceholder.typicode.com/todos",
       nueva_tarea
     );
-    console.log(respuesta.data);
     dispatch({
       type: GUARDADA
     })
@@ -80,7 +79,6 @@ export const editar = (tarea_editada) => async (dispatch) => {
       `https://jsonplaceholder.typicode.com/todos/${tarea_editada.id}`,
       tarea_editada
     );
-    console.log(respuesta.data);
     dispatch({
       type: GUARDADA,
     });
@@ -125,7 +123,6 @@ export const eliminar =  (tar_id) => async (dispatch) => {
     const respuesta = await axios.delete(
       `https://jsonplaceholder.typicode.com/todos/${tar_id}`
     );
-    console.log(respuesta);
     dispatch({
       type: TRAER_TODAS,
       payload: {}
